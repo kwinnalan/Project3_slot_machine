@@ -30,7 +30,7 @@ function main() {
         scoreBet();
         displayWinnings();
         askToPlay();
-    } while (again != 2);
+    } while (again !== '2');
 }
 
 main();
@@ -42,14 +42,13 @@ main();
  * @returns {null}
  */
 function getBet(){
+    let input
+    do {
+        input = PROMPT.question(`\nPlayer, please enter you'r bet (min 10 max 100,000): `);
+        bet = parseInt(input);
+    }while (bet < 10 || bet > 100000);
 
-    let input;
-
-    input = PROMPT.question(`\nPlayer please enter you'r bet: `);
-    console.log(' input= '+ input);
-    bet = parseInt(input);
-    console.log("bet type: " + typeof bet + " bet =" + bet);
-    console.log("bet type: " + typeof bet );
+    console.log("Bet = " + bet);
 }
 
 /**
@@ -64,7 +63,7 @@ function pullOrSpin(){
     for (i=0; i < 3; i++) {
         spin[i] = Math.floor(Math.random() * 6) + 1;
     }
-    console.log(spin);
+   // console.log(spin);
 }
 
 /**
@@ -93,7 +92,7 @@ function displayResults(){
             spin[i] = "Melons";
         }
         else if (spin[i] === 6) {
-            spin[i] = "bars";
+            spin[i] = "Bars";
         }
     }
     console.log("Spin: " + spin);
@@ -105,7 +104,7 @@ function displayResults(){
  * @returns {null}
  */
 function scoreResults(){
-    
+
         if (spin[0] === spin[1] && spin[1] === spin[2]){
             winAmt = 3;
         } else if (spin[0] === spin[1] || spin[0] === spin[2] || spin[1] === spin[2]) {
@@ -122,7 +121,8 @@ function scoreResults(){
  * @returns {null}
  */
 function scoreBet(){
-betWin = winAmt * bet;
+
+    betWin = winAmt * bet;
 }
 
 
@@ -132,6 +132,7 @@ betWin = winAmt * bet;
  * @returns {null}
  */
 function displayWinnings(){
+
     console.log('Bet: ' + bet);
     console.log('x'+ winAmt);
     console.log("Pay out = " + betWin);
@@ -143,10 +144,11 @@ function displayWinnings(){
  * @desc again mutator
  * @returns {null}
  */
-function askToPlay(){
+function askToPlay() {
+    do {
+        again = PROMPT.question(`\nPlayer, would you like to bet again? (1= yes 2= no): `);
 
-    again = PROMPT.question(`\nPlayer, would you like to bet again? (1= yes 2= no): `);
-
+    } while (again !== '1' && again !== '2');
 }
 
 
