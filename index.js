@@ -44,9 +44,10 @@ main();
 function getBet(){
     let input
     do {
-        input = PROMPT.question(`\nPlayer, please enter you'r bet (min 10 max 100,000): `);
+        input = PROMPT.question (`\nPlayer, please enter you'r bet (min 10 max 100,000): `);
         bet = parseInt(input);
-    }while (bet < 10 || bet > 100000);
+        console.log(`bet input: ${bet}`)
+    }while ((bet < 10) || (bet > 100000) || (isNaN(bet)));
 
     console.log("Bet = " + bet);
 }
