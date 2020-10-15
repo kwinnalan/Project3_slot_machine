@@ -1,13 +1,13 @@
-# project2_2pigs_game
+The Slot Machine
 
-Pig 2-Dice Game
+A slot machine is a gambling device that the user inserts money into and then pulls a lever (or presses a button). The slot machine then displays a set of random images. If two or more of the images match, the user wins an amount of money, which the slot machine dispenses back to the user. Design a program that simulates a slot machine. When the program runs, it should do the following:
 
-Roll the dice to see who goes first.  Highest role of the die is the first player.
+    Ask the user to enter the amount of money he or she wants to insert into the slot machine.
 
-When a Pig player takes their turn, they can roll the dice as many times as they want.  Scoring is simple – whatever the number of dots show up on the dice, that’s your points for the roll.  You keep rolling and accumulating the points.  If you roll a 3, then a 5, then a 2, and then a 6 your points so far would be 3 + 5 + 2 + 6 = 16.
+    Instead of displaying images, the program will randomly select a word from the following list:
+    Cherries, Oranges, Plums, Bells, Melons, Bars
+    The program will select and display a word from this list three times.
 
-If one of the dice is a 1, no points are added to the overall score and your turn is over.  But, if BOTH the dice show up as 1’s your entire score goes back to zero (0), your turn is over, and you pass the dice to the other player.
+    If none of the randomly selected words match, the program will inform the user that he or she has won $0. If two of the words match, the program will inform the user that he or she has won two times the amount entered. If three of the words match, the program will inform the user that he or she has won three times the amount entered.
 
-In 2-Dice Pig, doubles score higher. Just add up the dice value and double it.  Rolling two 2’s = (2 + 2) x 2 = 8.  Rolling two 5’s = (5 + 5) x 2 = 20.  The same for 3’s, 4’s, and 6’s.
-
-First player to 500 wins!
+    The program will ask whether the user wants to play again. If so, these steps are repeated. If not, the program displays the total amount of money entered into the slot machine and the total amount won.
