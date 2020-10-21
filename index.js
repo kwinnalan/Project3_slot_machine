@@ -11,7 +11,7 @@ const PROMPT = require('readline-sync');
 
 // ----Above this line is section 1, comment header block & pragmas/library calls----
 
-let bet, winAmt, betWin, again;
+let bet, winAmt, betWin, again, totWin;
 let spin = [0,0,0];
 
 // ----Above this line is section 2, global variable declarations & global constant declarations/assignments----
@@ -22,13 +22,15 @@ let spin = [0,0,0];
  * @returns {null}
  */
 function main() {
+    totWin = 0;
     do {
         getBet();
         pullOrSpin();
         displayResults();
         scoreResults();
         scoreBet();
-        displayWinnings();
+        displayBetWinnings();
+        addToTotWin();
         askToPlay();
     } while (again !== '2');
 }
@@ -132,11 +134,11 @@ function scoreBet(){
  * @desc Utility: outputs results
  * @returns {null}
  */
-function displayWinnings(){
+function displayBetWinnings(){
 
     console.log('Bet: ' + bet);
     console.log('x'+ winAmt);
-    console.log("Pay out = " + betWin);
+    console.log("Bet winnings = " + betWin);
 }
 
 
@@ -148,10 +150,31 @@ function displayWinnings(){
 function askToPlay() {
     do {
         again = PROMPT.question(`\nPlayer, would you like to bet again? (1= yes 2= no): `);
-
     } while (again !== '1' && again !== '2');
+    if (again === '2'){
+        displayWinnings();
+    }
 }
 
+/**
+ * @method
+ * @desc totWin mutator
+ * @returns {null}
+ */
+function addToTotWin(){
 
+    totWin = totWin + betWin;
+}
+
+/**
+ * @method
+ * @desc Utility: outputs results
+ * @returns {null}
+ */
+function displayWinnings(){
+
+    console.log(`Total winnings = ${totWin}!`)
+
+}
 // ----Above this line is section 4, mutator & worker/utility methods----
 
