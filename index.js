@@ -30,12 +30,12 @@ function main() {
     do {
         getBet();
         pullOrSpin();
-        displayResults();
+        makeDisplaySpin();
         scoreResults();
         scoreBet();
         displayBetWinnings();
         addToTotWin();
-        addToBetTot();
+        addToTotBets();
         askToPlay();
     } while (again !== '2');
 }
@@ -49,14 +49,14 @@ main();
  * @returns {null}
  */
 function getBet(){
+
     let input
+
     do {
         input = PROMPT.question (`\nPlayer, please enter you'r bet (min 10 max 100,000): `);
         bet = parseInt(input);
         console.log(`bet input: ${bet}`)
     }while ((bet < 10) || (bet > 100000) || (isNaN(bet)));
-
-    console.log("Bet = " + bet);
 }
 
 /**
@@ -79,7 +79,7 @@ function pullOrSpin(){
  * @desc spin mutator
  * @returns {null}
  */
-function displayResults(){
+function makeDisplaySpin(){
 
     let i;
 
@@ -103,7 +103,6 @@ function displayResults(){
             spin[i] = "Bars";
         }
     }
-    console.log(`Spin: ${spin}`);
 }
 
 /**
@@ -120,7 +119,6 @@ function scoreResults(){
         }else{
             winAmt = 0;
         }
-        console.log(`Matches = ${winAmt}`);
     }
 
 /**
@@ -141,9 +139,12 @@ function scoreBet(){
  */
 function displayBetWinnings(){
 
-    console.log(`Bet: ' ${bet}`);
-    console.log(`x+ ${winAmt}`);
-    console.log(`Bet winnings =  ${betWin}`);
+    console.log(`\nBet = $${bet}`);
+    console.log(`Spin: ${spin}`);
+    console.log(`Matches = ${winAmt}`);
+    console.log(`Bet = $${bet}`);
+    console.log(`x${winAmt}`);
+    console.log(`Bet winnings =  $${betWin}`);
 }
 
 
@@ -176,7 +177,7 @@ function addToTotWin(){
  * @desc betTot mutator
  * @returns {null}
  */
-function addToBetTot(){
+function addToTotBets(){
 
     betTot = betTot + bet;
 }
