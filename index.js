@@ -12,7 +12,7 @@ const PROMPT = require('readline-sync');
 // ----Above this line is section 1, comment header block & pragmas/library calls----
 
 let bet, winAmt, betWin, again, totWin, betTot;
-let spin = [0,0,0];
+let spin = [];
 
 // ----Above this line is section 2, global variable declarations & global constant declarations/assignments----
 
@@ -25,6 +25,7 @@ function main() {
 
     totWin = 0;
     betTot = 0;
+    spin = [0, 0, 0];
 
     do {
         getBet();
