@@ -11,7 +11,7 @@ const PROMPT = require('readline-sync');
 
 // ----Above this line is section 1, comment header block & pragmas/library calls----
 
-let bet, winAmt, betWin, again, totWin;
+let bet, winAmt, betWin, again, totWin, betTot;
 let spin = [0,0,0];
 
 // ----Above this line is section 2, global variable declarations & global constant declarations/assignments----
@@ -22,7 +22,10 @@ let spin = [0,0,0];
  * @returns {null}
  */
 function main() {
+
     totWin = 0;
+    betTot = 0;
+
     do {
         getBet();
         pullOrSpin();
@@ -31,6 +34,7 @@ function main() {
         scoreBet();
         displayBetWinnings();
         addToTotWin();
+        addToBetTot();
         askToPlay();
     } while (again !== '2');
 }
@@ -98,7 +102,7 @@ function displayResults(){
             spin[i] = "Bars";
         }
     }
-    console.log("Spin: " + spin);
+    console.log(`Spin: ${spin}`);
 }
 
 /**
@@ -115,7 +119,7 @@ function scoreResults(){
         }else{
             winAmt = 0;
         }
-        console.log("Matches =  " + winAmt);
+        console.log(`Matches = ${winAmt}`);
     }
 
 /**
@@ -136,9 +140,9 @@ function scoreBet(){
  */
 function displayBetWinnings(){
 
-    console.log('Bet: ' + bet);
-    console.log('x'+ winAmt);
-    console.log("Bet winnings = " + betWin);
+    console.log(`Bet: ' ${bet}`);
+    console.log(`x+ ${winAmt}`);
+    console.log(`Bet winnings =  ${betWin}`);
 }
 
 
@@ -168,12 +172,24 @@ function addToTotWin(){
 
 /**
  * @method
+ * @desc betTot mutator
+ * @returns {null}
+ */
+function addToBetTot(){
+
+    betTot = betTot + bet;
+}
+
+/**
+ * @method
  * @desc Utility: outputs results
  * @returns {null}
  */
 function displayWinnings(){
 
-    console.log(`Total winnings = ${totWin}!`)
+    console.log(`\n\nTotal bets = $${betTot}`);
+    console.log(`Total winnings = $${totWin}!`);
+    console.log(`Difference = $${totWin - betTot}`);
 
 }
 // ----Above this line is section 4, mutator & worker/utility methods----
