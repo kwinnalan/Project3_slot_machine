@@ -144,7 +144,7 @@ function displayBetWinnings(){
     console.log(`Matches = ${winAmt}`);
     console.log(`Bet = $${bet}`);
     console.log(`x${winAmt}`);
-    console.log(`Bet winnings =  $${betWin}`);
+    console.log(`Bet winnings = $${betWin}`);
 }
 
 
